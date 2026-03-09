@@ -1,0 +1,9 @@
+git mv **/index.html ./index.html 2>/dev/null || mv index.html index.html
+
+# 2. Adiciona o ficheiro vercel.json para forçar o roteamento
+echo '{"cleanUrls": true, "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]}' > vercel.json
+
+# 3. Sobe a correção
+git add .
+git commit -m "fix: ensure index.html is at root and lowercase"
+git push origin main
